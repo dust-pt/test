@@ -9,7 +9,7 @@ jobs:
 
     steps:
      - uses: actions/checkout@v2
-     - run: hello.py
+     - run: python hello.py
 
   build:
     name: Build
