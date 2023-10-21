@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      uses: actions/checkout@v2
-      run: hello.py
+     - uses: actions/checkout@v2
+     - run: hello.py
 
   build:
     name: Build
@@ -17,8 +17,8 @@ jobs:
     needs: test # This job depends on the 'test' job
 
     steps:
-      uses: actions/checkout@v2
-      uses: actions/upload-artifact@v2
+     - uses: actions/checkout@v2
+     - uses: actions/upload-artifact@v2
       with:
         name: hello
         path: .
