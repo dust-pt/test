@@ -1,0 +1,38 @@
+name: Test and Build
+
+on: [push] # This workflow will run on each push to the repository
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Run the test script
+      run: python -c "print('Hello, world')"
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: test # This job depends on the 'test' job
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Create an artifact
+      run: |
+        # Create your artifact here, for example, by zipping a directory
+        # Replace the following command with your actual build command
+        mkdir my_artifact
+        echo "This is the artifact content" > my_artifact/artifact.txt
+        zip -r my_artifact.zip my_artifact
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact # Name of the artifact
+        path: my_artifact.zip # Path to the artifact file
