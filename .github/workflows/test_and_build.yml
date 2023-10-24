@@ -9,6 +9,7 @@ jobs:
 
     steps:
      - uses: actions/checkout@v2
+     - uses: actions/setup-node@v2
        with:
         node-version: 16.x
      - run: python hello.py
@@ -19,6 +20,7 @@ jobs:
     needs: test # This job depends on the 'test' job
     steps:
      - uses: actions/checkout@v2
+     - uses: actions/setup-node@v2
        with:
            node-version: 16.x
      - uses: actions/upload-artifact@v2
